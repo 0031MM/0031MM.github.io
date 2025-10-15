@@ -1,0 +1,189 @@
+/* main.css - Base CSS for Jekyll site */
+
+/* Reset some default browser styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0rem;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+    min-height: 100vh;
+    margin: 6rem;
+}
+
+/* Header styles */
+.site-header {
+  background-color: #ffffff;
+  padding: 0rem 0rem
+}
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 0rem;
+}
+
+.site-logo {
+font-family: 'Inter', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #000000;
+  display: block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.site-slogan {
+font-family: 'Inter', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #000000;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  padding:10px;
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+}
+
+.nav-links a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: rgb(0, 0, 255);
+  text-decoration: none;
+}
+
+/* Project parameters */
+.project-meta {
+  list-style: none;
+  padding:10px;
+  margin: px;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+}
+
+/* Body / Container */
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 0.75em;
+    color: #000000;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; }
+
+/* Paragraphs */
+p {
+    margin-bottom: 1em;
+}
+
+/* Links */
+a {
+    color: rgb(0, 0, 255);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover, a:focus {
+    color: rgb(0, 0, 255);
+    text-decoration: none;
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+li {
+    margin-bottom: 0.2em;
+}
+
+/* Images */
+img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid rgb(0, 0, 255);
+    padding-left: 1em;
+    color: #000000;
+    margin: 1em 0;
+    background: #ffffff;
+}
+
+/* Code */
+pre, code {
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    background: #f4f4f4;
+    color: #333;
+    border-radius: 4px;
+}
+
+pre {
+    padding: 1em;
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+
+code {
+    padding: 0.2em 0.4em;
+    font-size: 0.95em;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.75em;
+    text-align: left;
+}
+
+th {
+    background: #f0f0f0;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    html {
+        font-size: 15px;
+    }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+}

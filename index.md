@@ -1,15 +1,8 @@
 ---
+# Feel free to add content and custom Front Matter to this file.
 layout: default
 title: Home
 ---
-## Projects
-
-{% for p in site.data.projects %}
-### [{{ p.title }}]({{ p.url }})
-{{ p.description }}
-{% endfor %}
-
-## Thoughts & ideas
 {% for post in site.posts limit:5 %}
-- [{{ post.title }}]({{ post.url }}) — {{ post.date | date: "%b %Y" }}
+[{{ post.title }}]({{ post.url }})
 {% endfor %}
