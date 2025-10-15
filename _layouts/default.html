@@ -1,0 +1,10 @@
+<!-- _layouts/default.html -->
+<!doctype html><html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head><body>
+  <header> ... nav ...</header>
+  <main class="container">{{ content }}</main>
+  <footer>...</footer>
+</body></html>
