@@ -1,10 +1,12 @@
 ---
 layout: default
-title: About
+title: 
 permalink: /about/
 ---
 
-Hello, I'm Martyna Maciaszek. 31MM is my life-long project nickname showing my professional growth and evolving interests. 
+# Hello 
+
+I'm Martyna Maciaszek. 31MM is my life-long project nickname showing my professional growth and evolving interests. 
 
 As a licensed architect I work on diverse projects - from furniture, interiors and buildings to urban-scale vision plans. Besides that I found myself willing to dig into coding, data visualisation and publishing. 
 

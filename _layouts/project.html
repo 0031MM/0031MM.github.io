@@ -2,16 +2,18 @@
 layout: default
 ---
 
-<article class="project">
 
-  <ul class="project-meta">
-    <li><strong>Client</strong> {{ page.client }}</li>
-    <li><strong>Location</strong> {{ page.location }}</li>
-    <li><strong>Size</strong> {{ page.size }}</li>
-    <li><strong>Year</strong> {{ page.year }}</li>
-  </ul>
+<h1> {{ page.title}} </h1>
 
   <div class="project-content">
     {{ content }}
   </div>
+
+  <div class="project-meta">
+    <strong>Client</strong> {{ page.client }}  
+    <strong>Location</strong> {{ page.location }}  
+    <strong>Size</strong> {{ page.size }}  
+    <strong>Year</strong> {{ page.year }}  
+  </div>
 </article>
+<br>
