@@ -126,6 +126,21 @@ li {
     margin-bottom: 0.2em;
 }
 
+#projects-list [data-project] {
+    margin-bottom: 1.1rem;
+}
+
+#projects-list {
+    margin-bottom: 3rem;
+}
+
+#project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
 /* Images */
 img {
     max-width: 70%;

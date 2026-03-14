@@ -5,10 +5,72 @@ title:
 permalink: /projects/
 ---
 
-# What I do
+# Projects
 
-Here you’ll find a selection of works that showcase my multidisciplinary approach.
+{% assign all_posts = site.posts | sort: "date" | reverse %}
+{% assign sorted_tags = site.tags | sort %}
 
-{% for post in site.posts limit:20 %}
-[{{ post.title }}]({{ post.url }}) — {{ post.date | date: "%Y" }}
+{% if sorted_tags.size > 0 %}
+**Tags**
+<nav id="project-tags">
+<a href="#" data-tag="all">all</a>
+{% for tag_entry in sorted_tags %}
+{% assign tag_name = tag_entry[0] %}
+<a href="#" data-tag="{{ tag_name }}">{{ tag_name }}</a>
 {% endfor %}
+</nav>
+{% endif %}
+
+<h2 id="projects-heading">All</h2>
+<div id="projects-list">
+{% for post in all_posts %}
+<div data-project data-tags="{{ post.tags | join: '|' | downcase }}">
+<a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+</div>
+{% endfor %}
+</div>
+
+<script>
+	(function () {
+		const tagsNav = document.getElementById('project-tags');
+		if (!tagsNav) return;
+
+		const heading = document.getElementById('projects-heading');
+		const projects = Array.from(document.querySelectorAll('[data-project]'));
+
+		function formatTagLabel(tag) {
+			if (!tag || tag === 'all') return 'All';
+			return tag
+				.split(/[-_\s]+/)
+				.filter(Boolean)
+				.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+				.join(' ');
+		}
+
+		function setFilter(tag) {
+			const normalizedTag = (tag || 'all').toLowerCase();
+
+			projects.forEach((project) => {
+				const tags = (project.getAttribute('data-tags') || '').split('|').filter(Boolean);
+				const visible = normalizedTag === 'all' || tags.includes(normalizedTag);
+				project.style.display = visible ? '' : 'none';
+			});
+
+			heading.textContent = formatTagLabel(normalizedTag);
+
+			tagsNav.querySelectorAll('a[data-tag]').forEach((link) => {
+				const isActive = link.getAttribute('data-tag').toLowerCase() === normalizedTag;
+				link.setAttribute('aria-current', isActive ? 'true' : 'false');
+			});
+		}
+
+		tagsNav.addEventListener('click', function (event) {
+			const link = event.target.closest('a[data-tag]');
+			if (!link) return;
+			event.preventDefault();
+			setFilter(link.getAttribute('data-tag'));
+		});
+
+		setFilter('all');
+	})();
+</script>

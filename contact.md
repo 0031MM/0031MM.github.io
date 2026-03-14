@@ -5,7 +5,7 @@ title:
 permalink: /contact/
 ---
 
-# Get in Touch
+# Get in touch
 
 If you’d like to collaborate, discuss a project, or just say hello — I’d love to hear from you!
 
