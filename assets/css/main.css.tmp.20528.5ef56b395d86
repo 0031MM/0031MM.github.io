@@ -80,8 +80,8 @@ font-family: 'Inter', Arial, sans-serif;
 /* Project parameters */
 .project-meta {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding:0px;
+  margin: px;
   display: flex;
   flex-direction: column;
   gap: 0rem;
@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { font-size: 2.25rem; }
 h2 { font-size: 1.75rem; }
-h3 { font-size: 1rem; font-weight: normal; font-style: italic; }
+h3 { font-size: 1.25rem; }
 h4 { font-size: 1.1rem; }
 h5 { font-size: 1rem; }
 h6 { font-size: 0.9rem; }
@@ -130,7 +130,7 @@ li {
 
 #projects-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
     gap: 2rem;
     margin-bottom: 3rem;
 }
@@ -228,7 +228,7 @@ th {
 }
 
 /* Responsive */
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     html {
         font-size: 15px;
     }
