@@ -1,17 +1,14 @@
 ---
 # Feel free to add content and custom Front Matter to this file.
 layout: default
-title: 
+title: Projects
 permalink: /projects/
 ---
-
-# Projects
 
 {% assign all_posts = site.posts | sort: "date" | reverse %}
 {% assign sorted_tags = site.tags | sort %}
 
 {% if sorted_tags.size > 0 %}
-**Tags**
 <nav id="project-tags">
 <a href="#" data-tag="all">all</a>
 {% for tag_entry in sorted_tags %}
@@ -21,7 +18,6 @@ permalink: /projects/
 </nav>
 {% endif %}
 
-<h2 id="projects-heading">All</h2>
 <div id="projects-list">
 {% for post in all_posts %}
 <div data-project data-tags="{{ post.tags | join: '|' | downcase }}">
@@ -42,17 +38,7 @@ permalink: /projects/
 		const tagsNav = document.getElementById('project-tags');
 		if (!tagsNav) return;
 
-		const heading = document.getElementById('projects-heading');
 		const projects = Array.from(document.querySelectorAll('[data-project]'));
-
-		function formatTagLabel(tag) {
-			if (!tag || tag === 'all') return 'All';
-			return tag
-				.split(/[-_\s]+/)
-				.filter(Boolean)
-				.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-				.join(' ');
-		}
 
 		function setFilter(tag) {
 			const normalizedTag = (tag || 'all').toLowerCase();
@@ -62,8 +48,6 @@ permalink: /projects/
 				const visible = normalizedTag === 'all' || tags.includes(normalizedTag);
 				project.style.display = visible ? '' : 'none';
 			});
-
-			heading.textContent = formatTagLabel(normalizedTag);
 
 			tagsNav.querySelectorAll('a[data-tag]').forEach((link) => {
 				const isActive = link.getAttribute('data-tag').toLowerCase() === normalizedTag;

@@ -4,8 +4,6 @@ layout: default
 title: 31MM
 ---
 
-# Welcome
-
 <div id="projects-list">
 {% for post in site.posts limit:100 %}
 <div>

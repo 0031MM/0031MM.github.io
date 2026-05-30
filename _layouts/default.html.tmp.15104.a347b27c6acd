@@ -2,15 +2,14 @@
 <!doctype html><html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>31MM{% if page.title %} {{ page.title }}{% endif %}</title>
+  <title> {{ page.title }} </title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  <link rel="icon" href="{{ '/favicon.png' | relative_url }}">
 </head><body>
   <div class="site-grid">
-    {% unless page.url == "/" %}<div class="col-title">{{ page.title }}</div>{% endunless %}
+    <div class="col-title">{{ page.title }}</div>
     <nav class="col-nav">{% include header.html %}</nav>
     <main class="col-content">{{ content }}</main>
   </div>

@@ -1,11 +1,11 @@
 /* main.css - Base CSS for Jekyll site */
 
-/* Reset some default browser styles */
+/* Reset */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    margin: 0rem;
+    margin: 0;
     padding: 0;
 }
 
@@ -20,74 +20,139 @@ body {
     color: #000000;
     line-height: 1.6;
     min-height: 100vh;
-    margin: 6rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header styles */
-.site-header {
-  background-color: #ffffff;
-  padding: 0rem 0rem
+/* Project detail layout — mobile first (must be BEFORE media queries) */
+.project-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
-.site-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0rem 0rem;
+.project-content { column-gap: 2rem; }
+.project-images  { margin-top: 3rem; }
+.project-images p   { margin-bottom: 1rem; }
+.project-images img { width: 100%; max-width: none; height: auto; display: block; }
+
+/* Layout */
+.site-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
+.col-nav     { grid-row: 1; }
+.col-title   { grid-row: 2; font-weight: 600; }
+.col-content { grid-row: 3; }
+
+@media (min-width: 600px) {
+    .site-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .col-title {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: end;
+        font-size: 2.25rem;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .col-nav {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .col-content {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .col-content:not(:has(#projects-list)):not(:has(.project-layout)) {
+        column-count: 2;
+        column-gap: 2rem;
+    }
+
+    #projects-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-layout   { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .project-meta-col { grid-column: 1; grid-row: 1; align-self: start; }
+    .project-content  { grid-column: 2; grid-row: 1; column-count: 1; }
+    .project-images   { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media (min-width: 900px) {
+    .site-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .col-nav {
+        grid-column: 3;
+    }
+
+    .col-content {
+        grid-column: 1 / 3;
+    }
+
+    .col-content:has(#projects-list),
+    .col-content:has(.project-layout) {
+        grid-column: 1 / -1;
+    }
+
+    .col-content:not(:has(#projects-list)):not(:has(.project-layout)) {
+        column-count: 2;
+    }
+
+    #projects-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-layout   { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+    .project-meta-col { grid-column: 1; grid-row: 1; align-self: start; }
+    .project-content  { grid-column: 2 / -1; grid-row: 1; column-count: 2; }
+    .project-images   { grid-column: 1 / -1; grid-row: 2; }
+}
+
+
+.next-column { break-before: column; }
+
+/* Nav */
 .site-logo {
-font-family: 'Inter', Arial, sans-serif;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #000000;
-  display: block;
-  margin-bottom: 1rem;
-  text-decoration: none;
-}
-
-.site-slogan {
-font-family: 'Inter', Arial, sans-serif;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #000000;
-  margin-bottom: 1rem;
-  text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #000000;
+    display: block;
+    margin-bottom: 1rem;
+    text-decoration: none;
 }
 
 .nav-links {
-  list-style: none;
-  padding:0px;
-  margin: 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 0rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .nav-links a {
-  color: #000000;
-  text-decoration: none;
-  transition: color 0.2s ease;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: rgb(0, 0, 255);
-  text-decoration: none;
+    color: rgb(0, 0, 255);
 }
 
-/* Project parameters */
-.project-meta {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0rem;
-}
-
-/* Body / Container */
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
@@ -128,11 +193,48 @@ li {
     margin-bottom: 0.2em;
 }
 
+/* Project metadata */
+.project-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Project content — images span full width, break out of text columns */
+.project-content p:has(> img) {
+    column-span: all;
+    margin-top: 3rem;
+    margin-bottom: 0;
+}
+
+.project-content p:has(> img) + p:has(> img) {
+    margin-top: 1rem;
+}
+
+.project-content img {
+    break-inside: avoid;
+}
+
+/* Projects grid */
 #projects-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-bottom: 3rem;
+}
+
+@media (min-width: 600px) {
+    #projects-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    #projects-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 #projects-list [data-project] {
@@ -148,7 +250,6 @@ li {
 .project-card img,
 .project-card__placeholder {
     width: 100%;
-    max-width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
@@ -166,17 +267,38 @@ li {
     color: rgb(0, 0, 255);
 }
 
-
+/* Tags */
 #project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.9rem;
+    column-gap: 0.9rem;
+    row-gap: 0;
     margin-bottom: 1.5rem;
+}
+
+@media (min-width: 600px) {
+    #project-tags { max-width: calc((100% - 2rem) / 2); }
+}
+
+@media (min-width: 900px) {
+    #project-tags { max-width: calc((100% - 4rem) / 3 * 2 + 2rem); }
+}
+
+
+#project-tags a {
+    color: #000000;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+#project-tags a[aria-current="true"] {
+    color: rgb(0, 0, 255);
 }
 
 /* Images */
 img {
-    max-width: 70%;
+    width: 100%;
+    max-width: 1200px;
     height: auto;
     display: block;
 }
@@ -227,11 +349,9 @@ th {
     font-weight: 600;
 }
 
-/* Responsive */
+/* Mobile */
 @media (max-width: 500px) {
-    html {
-        font-size: 15px;
-    }
+    html { font-size: 15px; }
     h1 { font-size: 1.5rem; }
     h2 { font-size: 1.25rem; }
 }

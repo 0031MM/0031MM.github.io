@@ -1,13 +1,13 @@
 ---
 # Feel free to add content and custom Front Matter to this file.
 layout: default
-title:
+title: Get in touch
 permalink: /contact/
 ---
 
-# Get in touch
-
 If you’d like to collaborate, discuss a project, or just say hello — I’d love to hear from you!
+
+<div class="next-column"></div>
 
 Email [martyna@31mm.nl](mailto:martyna@31mm.nl)  
 LinkedIn [martynamaciaszek](https://www.linkedin.com/in/martynamaciaszek/)  

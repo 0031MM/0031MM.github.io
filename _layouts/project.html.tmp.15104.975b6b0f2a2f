@@ -10,14 +10,12 @@ layout: default
       <li><strong>Year</strong> {{ page.year }}</li>
     </ul>
   </div>
+  <div class="project-slogan"></div>
   <div class="project-content">{{ content }}</div>
-  <div class="project-images"></div>
 </div>
 <script>
   (function() {
-    var content = document.querySelector('.project-content');
-    var images = content.querySelectorAll('p:has(img)');
-    var imagesDiv = document.querySelector('.project-images');
-    images.forEach(function(p) { imagesDiv.appendChild(p); });
+    var slogan = document.querySelector('.project-content h3');
+    if (slogan) document.querySelector('.project-slogan').appendChild(slogan);
   })();
 </script>
